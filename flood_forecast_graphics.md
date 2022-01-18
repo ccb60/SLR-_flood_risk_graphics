@@ -3,12 +3,24 @@ Graphics Explaining Flood Forecasting
 Curtis C. Bohlen, Casco Bay Estuary Partnership
 Revised, 1/18/2022
 
+-   [Introduction](#introduction)
 -   [Install Libraries](#install-libraries)
 -   [Retreive Portland Tide Data](#retreive-portland-tide-data)
 
 <img
     src="https://www.cascobayestuary.org/wp-content/uploads/2014/04/logo_sm.jpg"
     style="position:absolute;top:10px;right:50px;" />
+
+# Introduction
+
+This repository develops some simple graphics to help explain how a
+relatively modest increase in sea level can result in substantial
+increases in the frequency of “minor” tidal flooding.
+
+It relies on a package developed by CBEP staff to analyze NOAA tide
+gauge data for sea level trends and future flood frequencies. The
+package accesses NOAA on-line data, so an internet connection is needed
+to
 
 # Install Libraries
 
@@ -132,6 +144,7 @@ ggplot(results, aes(x = val*12, y = Mean)) +
   geom_linerange(aes(x = val*12, ymin = Mean - 1.96*SD, ymax = Mean + 1.96*SD)) +
   geom_point(size = 3, color = "cadetblue") +
   ylab('Flood Days Per Year') +
+  scale_x_continuous(breaks = seq(0,24,6)) +
   annotate('text', x = 2, y = 175, hjust = 0, label = '"Flood" at HAT = 11.95 ft MLLW') +
   xlab('Sea Level Rise Scenario (inches)')
 ```
@@ -148,7 +161,8 @@ for (highlight in seq(0, 2, 0.25)) {
     geom_line() +
     geom_linerange(aes(x = val*12, ymin = Mean - 1.96*SD, ymax = Mean + 1.96*SD)) +
     geom_point(aes(color = (highlight == val)), size = 3) +
-    scale_color_discrete(type = c("cadetblue4", 'yellow2')) +
+    scale_color_discrete(type = c("cadetblue", 'yellow2')) +
+    scale_x_continuous(breaks = seq(0,24,6)) +
     ylab('Flood Days Per Year') +
     annotate('text', x = 2, y = 175, hjust = 0, label = '"Flood" at HAT = 11.95 ft MLLW') +
     xlab('Sea Level Rise Scenario (inches)') +

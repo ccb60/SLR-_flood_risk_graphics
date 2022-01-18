@@ -9,7 +9,6 @@ output:
     fig_height: 4
 ---
 
-
 <img
     src="https://www.cascobayestuary.org/wp-content/uploads/2014/04/logo_sm.jpg"
     style="position:absolute;top:10px;right:50px;" />
@@ -23,6 +22,16 @@ knitr::opts_chunk$set(
   fig.width = 5, fig.height = 4
 )
 ```
+
+# Introduction
+This repository develops some simple graphics to help explain how a relatively 
+modest increase in sea level can result in substantial increases in the
+frequency of "minor" tidal flooding. 
+
+It relies on a package developed by CBEP staff to analyze NOAA tide gauge
+data for sea level trends and future flood frequencies. The package accesses
+NOAA on-line data, so an internet connection is needed to 
+
 
 # Install Libraries
 ```{r}
